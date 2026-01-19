@@ -13,7 +13,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
     name: '',
     email: '',
     discord: '',
-    service: 'thumbnail',
+    thumbnailCount: 1,
     description: ''
   });
 
@@ -32,7 +32,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
   const handleClose = () => {
     if (step === 'success') {
       setStep('form');
-      setFormData({ name: '', email: '', discord: '', service: 'thumbnail', description: '' });
+      setFormData({ name: '', email: '', discord: '', thumbnailCount: 1, description: '' });
     }
     onClose();
   };
@@ -102,25 +102,30 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1">Service Required</label>
-                <div className="relative">
-                  <select 
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#8c59e4] transition-colors appearance-none cursor-pointer"
-                    value={formData.service}
-                    onChange={e => setFormData({...formData, service: e.target.value})}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1">Thumbnail Count (0-10)</label>
+                  <input 
+                    type="number"
+                    min="0"
+                    max="10"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#8c59e4] transition-colors placeholder:text-zinc-700"
+                    value={formData.thumbnailCount}
+                    onChange={e => {
+                        let val = parseInt(e.target.value);
+                        if (isNaN(val)) val = 0;
+                        if (val > 10) val = 10;
+                        if (val < 0) val = 0;
+                        setFormData({...formData, thumbnailCount: val});
+                    }}
                     disabled={step === 'submitting'}
-                  >
-                    <option value="thumbnail">YouTube Thumbnail</option>
-                    <option value="thumbnail_variant">Thumbnail + Variant</option>
-                    <option value="bundle">Thumbnail Bundle (5x)</option>
-                    <option value="audit">Channel Audit</option>
-                    <option value="banner">YouTube Banner</option>
-                    <option value="custom">Custom Project</option>
-                  </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </div>
+                  />
+                </div>
+                <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1">Price</label>
+                    <div className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white/60 select-none">
+                        DM for price
+                    </div>
                 </div>
               </div>
 
