@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Check, Loader2 } from 'lucide-react';
+import { X, Check, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from './Button';
 
 interface OrderModalProps {
@@ -8,7 +8,7 @@ interface OrderModalProps {
 }
 
 export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
-  const [step, setStep] = useState<'form' | 'submitting' | 'success'>('form');
+  const [step, setStep] = useState<'form' | 'submitting' | 'success' | 'error'>('form');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,18 +19,44 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStep('submitting');
     
-    // Simulate API network request
-    setTimeout(() => {
-      setStep('success');
-    }, 1500);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "fdd7eeeb-e31a-4432-b947-d20482ecac11",
+          name: formData.name,
+          email: formData.email,
+          discord: formData.discord,
+          thumbnail_count: formData.thumbnailCount,
+          message: formData.description,
+          subject: `New Project Request from ${formData.name}`
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStep('success');
+      } else {
+        console.error("Form submission failed", result);
+        setStep('error');
+      }
+    } catch (error) {
+      console.error("Form submission error", error);
+      setStep('error');
+    }
   };
 
   const handleClose = () => {
-    if (step === 'success') {
+    if (step === 'success' || step === 'error') {
       setStep('form');
       setFormData({ name: '', email: '', discord: '', thumbnailCount: 1, description: '' });
     }
@@ -156,7 +182,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
               </div>
             </form>
           </>
-        ) : (
+        ) : step === 'success' ? (
           <div className="text-center py-12 px-4 animate-in fade-in slide-in-from-bottom-4 duration-300">
             <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check size={40} className="text-green-500" />
@@ -166,6 +192,17 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
               Thanks {formData.name}! I'll review your project details and send a response to <span className="text-white font-medium">{formData.email}</span> shortly.
             </p>
             <Button onClick={handleClose} variant="secondary">Close</Button>
+          </div>
+        ) : (
+           <div className="text-center py-12 px-4 animate-in fade-in slide-in-from-bottom-4 duration-300">
+             <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <AlertCircle size={40} className="text-red-500" />
+            </div>
+            <h3 className="text-2xl font-black text-white mb-2">Submission Failed</h3>
+            <p className="text-zinc-400 mb-8 max-w-xs mx-auto">
+              Something went wrong while sending your request. Please check your connection or try again later.
+            </p>
+            <Button onClick={() => setStep('form')} variant="secondary">Try Again</Button>
           </div>
         )}
       </div>
