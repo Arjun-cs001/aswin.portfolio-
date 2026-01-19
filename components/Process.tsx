@@ -2,7 +2,11 @@ import React from 'react';
 import { Send, Settings, ArrowUpCircle } from 'lucide-react';
 import { Button } from './Button';
 
-export const Process: React.FC = () => {
+interface ProcessProps {
+  onOpenOrder: () => void;
+}
+
+export const Process: React.FC<ProcessProps> = ({ onOpenOrder }) => {
   return (
     <section className="py-24 bg-[#8c59e4] text-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -54,7 +58,7 @@ export const Process: React.FC = () => {
         </div>
 
         <div className="text-center">
-            <Button variant="dark">Get in touch</Button>
+            <Button variant="dark" onClick={onOpenOrder}>Get in touch</Button>
         </div>
       </div>
     </section>

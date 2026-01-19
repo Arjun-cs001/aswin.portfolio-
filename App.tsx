@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Testimonials } from './components/Testimonials';
@@ -6,19 +6,28 @@ import { Portfolio } from './components/Portfolio';
 import { Process } from './components/Process';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
+import { OrderModal } from './components/OrderModal';
+import { WhyHire } from './components/WhyHire';
 
 function App() {
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+
+  const openOrderModal = () => setIsOrderModalOpen(true);
+  const closeOrderModal = () => setIsOrderModalOpen(false);
+
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col">
-      <Header />
+    <div className="min-h-screen bg-zinc-950 flex flex-col font-sans">
+      <Header onOpenOrder={openOrderModal} />
       <main className="flex-grow">
-        <Hero />
+        <Hero onOpenOrder={openOrderModal} />
         <Testimonials />
         <Portfolio />
-        <Process />
+        <WhyHire />
+        <Process onOpenOrder={openOrderModal} />
         <FAQ />
       </main>
-      <Footer />
+      <Footer onOpenOrder={openOrderModal} />
+      <OrderModal isOpen={isOrderModalOpen} onClose={closeOrderModal} />
     </div>
   );
 }

@@ -2,7 +2,11 @@ import React from 'react';
 import { Button } from './Button';
 import { Youtube, Twitter, Instagram } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenOrder: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenOrder }) => {
   return (
     <footer className="bg-[#8c59e4] text-white pt-20 pb-10 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -10,7 +14,7 @@ export const Footer: React.FC = () => {
         <h2 className="text-5xl md:text-6xl font-black mb-10 tracking-tight">impression count.</h2>
         
         <div className="mb-16">
-            <Button variant="dark" className="px-10 py-4 text-lg">Let's do this!</Button>
+            <Button variant="dark" className="px-10 py-4 text-lg" onClick={onOpenOrder}>Let's do this!</Button>
         </div>
 
         <div className="border-t border-white/20 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">

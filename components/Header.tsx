@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './Button';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  onOpenOrder: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onOpenOrder }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -30,11 +34,12 @@ export const Header: React.FC = () => {
             <div className="ml-10 flex items-baseline space-x-8">
               <a href="#" className="hover:text-[#8c59e4] transition-colors font-medium">Home</a>
               <a href="#portfolio" className="hover:text-[#8c59e4] transition-colors font-medium">Portfolio</a>
+              <a href="#story" className="hover:text-[#8c59e4] transition-colors font-medium">Why Me?</a>
             </div>
           </div>
 
           <div className="hidden md:block">
-            <Button variant="primary" className="py-2 text-sm">Hire Aswin Today</Button>
+            <Button variant="primary" className="py-2 text-sm" onClick={onOpenOrder}>Hire Aswin Today</Button>
           </div>
 
           <div className="md:hidden">
@@ -51,7 +56,7 @@ export const Header: React.FC = () => {
             <a href="#" className="block px-3 py-2 rounded-md hover:bg-zinc-800 hover:text-[#8c59e4]">Home</a>
             <a href="#portfolio" className="block px-3 py-2 rounded-md hover:bg-zinc-800 hover:text-[#8c59e4]">Portfolio</a>
             <div className="mt-4 px-3">
-                <Button variant="primary" fullWidth className="py-2">Hire Aswin Today</Button>
+                <Button variant="primary" fullWidth className="py-2" onClick={() => { setIsOpen(false); onOpenOrder(); }}>Hire Aswin Today</Button>
             </div>
           </div>
         </div>

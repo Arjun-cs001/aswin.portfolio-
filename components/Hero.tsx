@@ -2,7 +2,11 @@ import React, { useRef } from 'react';
 import { Button } from './Button';
 import { CheckCircle } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenOrder: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleTimeUpdate = () => {
@@ -28,8 +32,8 @@ export const Hero: React.FC = () => {
           </p>
           
           <div className="flex flex-wrap gap-4">
-            <Button variant="primary">Get in touch</Button>
-            <Button variant="secondary">View Portfolio</Button>
+            <Button variant="primary" onClick={onOpenOrder}>Get in touch</Button>
+            <a href="#portfolio"><Button variant="secondary">View Portfolio</Button></a>
           </div>
 
           <div className="pt-8">
