@@ -16,7 +16,15 @@ export const WhyHire: React.FC = () => {
                     </p>
                 </div>
                 <div className="rounded-xl overflow-hidden border border-zinc-800 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <img src="https://picsum.photos/seed/clickbait/600/400" alt="Anti clickbait" className="w-full h-auto grayscale hover:grayscale-0 transition-all" />
+                    <img 
+                      src="https://picsum.photos/seed/clickbait/600/400" 
+                      alt="Anti clickbait" 
+                      className="w-full h-auto grayscale hover:grayscale-0 transition-all" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={400}
+                    />
                 </div>
             </div>
 
@@ -29,7 +37,15 @@ export const WhyHire: React.FC = () => {
                     </p>
                 </div>
                 <div className="md:order-1 rounded-xl overflow-hidden border border-zinc-800 shadow-2xl -rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <img src="https://picsum.photos/seed/process/600/400" alt="Process" className="w-full h-auto grayscale hover:grayscale-0 transition-all" />
+                    <img 
+                      src="https://picsum.photos/seed/process/600/400" 
+                      alt="Process" 
+                      className="w-full h-auto grayscale hover:grayscale-0 transition-all" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={400}
+                    />
                 </div>
             </div>
 
@@ -42,7 +58,15 @@ export const WhyHire: React.FC = () => {
                     </p>
                 </div>
                 <div className="rounded-xl overflow-hidden border border-zinc-800 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <img src="https://picsum.photos/seed/trend/600/400" alt="Trends" className="w-full h-auto grayscale hover:grayscale-0 transition-all" />
+                    <img 
+                      src="https://picsum.photos/seed/trend/600/400" 
+                      alt="Trends" 
+                      className="w-full h-auto grayscale hover:grayscale-0 transition-all" 
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={400}
+                    />
                 </div>
             </div>
         </div>

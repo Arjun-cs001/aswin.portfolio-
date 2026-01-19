@@ -19,6 +19,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenOrder }) => {
               <img 
                 src="https://res.cloudinary.com/dcnz8e0nz/image/upload/v1768831079/ZYkvgAAAABklEQVQDAMcDOUrHMya8AAAAAElFTkSuQmCC_uxcd4o.png" 
                 alt="Aswin GFX" 
+                width={40}
+                height={40}
                 className="relative w-10 h-10 rounded-full border-2 border-[#8c59e4] object-cover bg-zinc-800"
                 onError={(e) => {
                   // Fallback if image not found

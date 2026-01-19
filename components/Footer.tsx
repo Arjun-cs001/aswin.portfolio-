@@ -23,6 +23,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrder }) => {
                     src="https://res.cloudinary.com/dcnz8e0nz/image/upload/v1768831079/ZYkvgAAAABklEQVQDAMcDOUrHMya8AAAAAElFTkSuQmCC_uxcd4o.png" 
                     alt="Aswin GFX" 
                     className="w-6 h-6 rounded-full border border-white/20"
+                    width={24}
+                    height={24}
+                    loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';

@@ -41,6 +41,7 @@ const MarqueeRow: React.FC<{
               alt={`Portfolio item ${index}`} 
               className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
               loading="lazy"
+              decoding="async"
             />
           </div>
         ))}

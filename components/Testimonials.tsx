@@ -35,7 +35,14 @@ export const Testimonials: React.FC = () => {
             <Quote className="text-[#8c59e4] mb-4 opacity-50" size={24} />
             <p className="text-zinc-300 mb-8 leading-relaxed text-sm">"{t.content}"</p>
             <div className="flex items-center gap-4 mt-auto">
-              <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full border border-zinc-700" />
+              <img 
+                src={t.avatar} 
+                alt={t.author} 
+                className="w-10 h-10 rounded-full border border-zinc-700" 
+                loading="lazy"
+                width={40}
+                height={40}
+              />
               <div>
                 <h4 className="font-bold text-white text-sm">{t.author}</h4>
                 <p className="text-zinc-500 text-xs">{t.role}</p>

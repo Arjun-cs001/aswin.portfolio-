@@ -42,7 +42,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                {/* Placeholders for logos/avatars */}
                {[1, 2, 3, 4, 5].map((i) => (
                  <div key={i} className="w-10 h-10 rounded-full bg-zinc-800 border-2 border-zinc-700 overflow-hidden flex items-center justify-center">
-                    <img src={`https://picsum.photos/seed/creator${i}/50`} alt="Creator" className="w-full h-full object-cover opacity-80" />
+                    <img 
+                      src={`https://picsum.photos/seed/creator${i}/50`} 
+                      alt="Creator" 
+                      className="w-full h-full object-cover opacity-80"
+                      width={40}
+                      height={40}
+                      loading="lazy"
+                    />
                  </div>
                ))}
                <span className="text-sm text-zinc-500 font-medium">+20 more</span>
