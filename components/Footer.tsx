@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenOrder }) => {
         <div className="border-t border-white/20 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2 text-sm font-semibold opacity-80">
                 <img 
-                    src="https://res.cloudinary.com/dcnz8e0nz/image/upload/v1768831079/ZYkvgAAAABklEQVQDAMcDOUrHMya8AAAAAElFTkSuQmCC_uxcd4o.png" 
+                    src="https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_100/v1768831079/ZYkvgAAAABklEQVQDAMcDOUrHMya8AAAAAElFTkSuQmCC_uxcd4o.png" 
                     alt="Aswin GFX" 
                     className="w-6 h-6 rounded-full border border-white/20"
                     width={24}

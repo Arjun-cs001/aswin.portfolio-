@@ -71,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenOrder }) => {
                 <div className="mt-6 rounded-xl overflow-hidden bg-black relative aspect-[4/3]">
                     <video 
                         ref={videoRef}
-                        src="https://res.cloudinary.com/dcnz8e0nz/video/upload/v1768845087/Photo_Animation_For_Website_edkwa7.mp4" 
+                        src="https://res.cloudinary.com/dcnz8e0nz/video/upload/q_auto,vc_auto/v1768845087/Photo_Animation_For_Website_edkwa7.mp4" 
                         className="w-full h-full object-cover"
                         autoPlay
                         muted

@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenOrder }) => {
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-[#8c59e4] rounded-full blur opacity-30 group-hover:opacity-75 transition duration-200"></div>
               <img 
-                src="https://res.cloudinary.com/dcnz8e0nz/image/upload/v1768831079/ZYkvgAAAABklEQVQDAMcDOUrHMya8AAAAAElFTkSuQmCC_uxcd4o.png" 
+                src="https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_100/v1768831079/ZYkvgAAAABklEQVQDAMcDOUrHMya8AAAAAElFTkSuQmCC_uxcd4o.png" 
                 alt="Aswin GFX" 
                 width={40}
                 height={40}
