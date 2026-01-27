@@ -20,8 +20,8 @@ function App() {
       <Header onOpenOrder={openOrderModal} />
       <main className="flex-grow">
         <Hero onOpenOrder={openOrderModal} />
-        <Testimonials />
         <Portfolio />
+        <Testimonials />
         <WhyHire />
         <Process onOpenOrder={openOrderModal} />
         <FAQ />

@@ -1,6 +1,9 @@
 import React from 'react';
 
 const thumbnails = [
+  "https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_500/v1769549942/post_toilb1.png",
+  "https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_500/v1769549935/final_pbnwgo.png",
+  "https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_500/v1769549929/final1_ev2rug.png",
   "https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_500/v1768840416/finalwith_smile_qzhh9e.jpg",
   "https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_500/v1768840408/final_d4wnw2.png",
   "https://res.cloudinary.com/dcnz8e0nz/image/upload/f_auto,q_auto,w_500/v1768840385/1_S_xca4ez.jpg",
@@ -60,19 +63,19 @@ export const Portfolio: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-6">
-        {/* Layer 1: Left to Right */}
+        {/* Layer 3 moved to Top: Right to Left (Reversed) */}
         <div className="transform scale-105 transition-opacity duration-500">
-           <MarqueeRow direction="right" images={galleryItems} />
+           <MarqueeRow direction="right" images={[...galleryItems].reverse()} />
         </div>
 
-        {/* Layer 2: Right to Left */}
+        {/* Layer 2: Right to Left (Reversed) - kept in middle */}
         <div className="transform scale-105 z-10 transition-opacity duration-500">
            <MarqueeRow direction="left" images={[...galleryItems].reverse()} />
         </div>
 
-        {/* Layer 3: Left to Right */}
+        {/* Layer 1 moved to Bottom: Left to Right (Original) */}
         <div className="transform scale-105 transition-opacity duration-500">
-           <MarqueeRow direction="right" images={[...galleryItems].reverse()} />
+           <MarqueeRow direction="right" images={galleryItems} />
         </div>
       </div>
       
